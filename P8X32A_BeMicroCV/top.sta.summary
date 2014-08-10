@@ -1,0 +1,805 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'tim:clkgen|divide[12]'
+Slack : -14.256
+TNS   : -48142.287
+
+Type  : Slow 1100mV 85C Model Setup 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -10.141
+TNS   : -5092.798
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.656
+TNS   : -720.664
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.646
+TNS   : -756.789
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.624
+TNS   : -742.743
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.028
+TNS   : -672.835
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.911
+TNS   : -694.631
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.891
+TNS   : -653.640
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.760
+TNS   : -656.291
+
+Type  : Slow 1100mV 85C Model Setup 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.435
+TNS   : -638.257
+
+Type  : Slow 1100mV 85C Model Hold 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.967
+TNS   : -2.967
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.543
+TNS   : -2.745
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.231
+TNS   : -1.309
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.098
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.224
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.506
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.533
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'tim:clkgen|divide[12]'
+Slack : 0.540
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.386
+TNS   : -6.386
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.328
+TNS   : -6.328
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.151
+TNS   : -6.151
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.150
+TNS   : -6.150
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.133
+TNS   : -6.133
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.682
+TNS   : -5.682
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.486
+TNS   : -5.486
+
+Type  : Slow 1100mV 85C Model Recovery 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.436
+TNS   : -5.436
+
+Type  : Slow 1100mV 85C Model Recovery 'tim:clkgen|divide[12]'
+Slack : -2.794
+TNS   : -2683.479
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.259
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.550
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.613
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.979
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.072
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.088
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'tim:clkgen|divide[12]'
+Slack : 1.169
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.360
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.373
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'tim:clkgen|divide[12]'
+Slack : -4.555
+TNS   : -19799.447
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.186
+TNS   : -683.525
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.127
+TNS   : -708.115
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.061
+TNS   : -731.326
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.990
+TNS   : -602.711
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.941
+TNS   : -618.773
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.899
+TNS   : -579.800
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.782
+TNS   : -620.644
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.352
+TNS   : -435.557
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.562
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.166
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock_50'
+Slack : 9.791
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'tim:clkgen|divide[12]'
+Slack : -14.110
+TNS   : -46876.594
+
+Type  : Slow 1100mV 0C Model Setup 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -10.130
+TNS   : -5113.875
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.845
+TNS   : -728.985
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.801
+TNS   : -765.830
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.747
+TNS   : -756.005
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.124
+TNS   : -682.057
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.082
+TNS   : -708.280
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -7.052
+TNS   : -668.673
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.859
+TNS   : -670.567
+
+Type  : Slow 1100mV 0C Model Setup 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.638
+TNS   : -660.435
+
+Type  : Slow 1100mV 0C Model Hold 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -2.874
+TNS   : -2.874
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.521
+TNS   : -1.861
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.168
+TNS   : -0.367
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.218
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.273
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.288
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.380
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.487
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.548
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'tim:clkgen|divide[12]'
+Slack : 0.586
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.342
+TNS   : -6.342
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.339
+TNS   : -6.339
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.252
+TNS   : -6.252
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.192
+TNS   : -6.192
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -6.180
+TNS   : -6.180
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.770
+TNS   : -5.770
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.618
+TNS   : -5.618
+
+Type  : Slow 1100mV 0C Model Recovery 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -5.547
+TNS   : -5.547
+
+Type  : Slow 1100mV 0C Model Recovery 'tim:clkgen|divide[12]'
+Slack : -2.609
+TNS   : -2482.460
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.498
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.715
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.957
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.970
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.998
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'tim:clkgen|divide[12]'
+Slack : 1.101
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.267
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.306
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'tim:clkgen|divide[12]'
+Slack : -4.555
+TNS   : -19648.009
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.335
+TNS   : -754.432
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.233
+TNS   : -734.449
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.154
+TNS   : -770.490
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.097
+TNS   : -652.813
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.003
+TNS   : -626.515
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.932
+TNS   : -612.603
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.920
+TNS   : -606.622
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -1.364
+TNS   : -474.380
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.562
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.215
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : 9.810
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'tim:clkgen|divide[12]'
+Slack : -6.783
+TNS   : -21028.794
+
+Type  : Fast 1100mV 85C Model Setup 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -5.132
+TNS   : -2524.903
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.879
+TNS   : -335.985
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.764
+TNS   : -347.272
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.708
+TNS   : -352.317
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.474
+TNS   : -320.186
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.308
+TNS   : -318.578
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.261
+TNS   : -293.221
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.135
+TNS   : -289.218
+
+Type  : Fast 1100mV 85C Model Setup 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.073
+TNS   : -280.409
+
+Type  : Fast 1100mV 85C Model Hold 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -1.137
+TNS   : -1.137
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.081
+TNS   : -0.196
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.063
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.079
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.081
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.123
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.168
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'tim:clkgen|divide[12]'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.192
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.233
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.951
+TNS   : -2.951
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.944
+TNS   : -2.944
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.928
+TNS   : -2.928
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.867
+TNS   : -2.867
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.805
+TNS   : -2.805
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.695
+TNS   : -2.695
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.345
+TNS   : -2.345
+
+Type  : Fast 1100mV 85C Model Recovery 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.227
+TNS   : -2.227
+
+Type  : Fast 1100mV 85C Model Recovery 'tim:clkgen|divide[12]'
+Slack : -1.007
+TNS   : -570.486
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.267
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.390
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'tim:clkgen|divide[12]'
+Slack : 0.462
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.634
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.791
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.802
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.812
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.876
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.041
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'tim:clkgen|divide[12]'
+Slack : -2.636
+TNS   : -8756.591
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.736
+TNS   : -102.628
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.687
+TNS   : -117.988
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.659
+TNS   : -100.185
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.614
+TNS   : -138.503
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.612
+TNS   : -97.425
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.587
+TNS   : -107.877
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.542
+TNS   : -117.008
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.285
+TNS   : -39.566
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.562
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.497
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock_50'
+Slack : 9.336
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'tim:clkgen|divide[12]'
+Slack : -5.845
+TNS   : -17917.649
+
+Type  : Fast 1100mV 0C Model Setup 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -4.713
+TNS   : -2352.026
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.517
+TNS   : -310.872
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.484
+TNS   : -323.609
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.402
+TNS   : -327.069
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.208
+TNS   : -296.345
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -3.070
+TNS   : -297.945
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.957
+TNS   : -270.210
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.923
+TNS   : -274.121
+
+Type  : Fast 1100mV 0C Model Setup 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.871
+TNS   : -261.401
+
+Type  : Fast 1100mV 0C Model Hold 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : -1.069
+TNS   : -1.069
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.045
+TNS   : -0.045
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.049
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.061
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.067
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.117
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.165
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'tim:clkgen|divide[12]'
+Slack : 0.169
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.176
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.216
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.748
+TNS   : -2.748
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.734
+TNS   : -2.734
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.706
+TNS   : -2.706
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.686
+TNS   : -2.686
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.620
+TNS   : -2.620
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.498
+TNS   : -2.498
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.208
+TNS   : -2.208
+
+Type  : Fast 1100mV 0C Model Recovery 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -2.053
+TNS   : -2.053
+
+Type  : Fast 1100mV 0C Model Recovery 'tim:clkgen|divide[12]'
+Slack : -0.785
+TNS   : -357.434
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'tim:clkgen|divide[12]'
+Slack : 0.421
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.490
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.678
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.777
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.840
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.852
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 0.881
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : 1.010
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'tim:clkgen|divide[12]'
+Slack : -2.636
+TNS   : -8740.961
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[1].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.618
+TNS   : -90.557
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[4].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.547
+TNS   : -112.453
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[7].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.547
+TNS   : -81.118
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[5].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.543
+TNS   : -85.530
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[3].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.522
+TNS   : -86.387
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[2].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.503
+TNS   : -83.376
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[6].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.484
+TNS   : -98.178
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'dig:core|cog:coggen[0].cog_|cog_ctr:cog_ctra|ctr[23]'
+Slack : -0.263
+TNS   : -34.299
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
+Slack : 1.562
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'pll|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 2.559
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : 9.286
+TNS   : 0.000
+
+------------------------------------------------------------
