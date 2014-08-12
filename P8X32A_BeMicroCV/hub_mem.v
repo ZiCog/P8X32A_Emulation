@@ -21,17 +21,17 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
-module              hub_mem
+module                hub_mem
 (
-input               clk_cog,
-input               ena_bus,
+input                clk_cog,
+input                ena_bus,
 
-input               w,
-input        [3:0]  wb,
-input       [13:0]  a,
-input       [31:0]  d,
+input                w,
+input         [3:0]    wb,
+input        [13:0]    a,
+input        [31:0]    d,
 
-output      [31:0]  q
+output        [31:0]    q
 );
 
 
@@ -82,7 +82,7 @@ end
 
 // 4096 x 32 rom containing character definitions ($8000..$BFFF)
 
-(* ram_init_file = "hub_rom_low.hex" *)     reg [31:0] rom_low [4095:0];
+(* ram_init_file = "hub_rom_low.hex" *)        reg    [31:0] rom_low [4095:0];
 
 reg [31:0] rom_low_q;
 
@@ -93,7 +93,7 @@ if (ena_bus && a[13:12] == 2'b10)
 
 // 4096 x 32 rom containing sin table, log table, booter, and interpreter ($C000..$FFFF)
 
-(* ram_init_file = "hub_rom_high.hex" *)    reg [31:0] rom_high [4095:0];
+(* ram_init_file = "hub_rom_high.hex" *)    reg    [31:0] rom_high [4095:0];
 
 reg [31:0] rom_high_q;
 
@@ -110,8 +110,8 @@ always @(posedge clk_cog)
 if (ena_bus)
     mem <= a[13:12];
 
-assign q            = !mem[1]   ? {ram_q3, ram_q2, ram_q1, ram_q0}
-                    : !mem[0]   ? rom_low_q     // comment out this line for DE0-Nano (sacrifices character rom to fit device)
+assign q            = !mem[1]    ? {ram_q3, ram_q2, ram_q1, ram_q0}
+        //            : !mem[0]    ? rom_low_q        // comment out this line for DE0-Nano (sacrifices character rom to fit device)
                                 : rom_high_q;
 
 endmodule

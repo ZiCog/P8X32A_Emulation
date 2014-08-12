@@ -21,26 +21,26 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
-module              cog_ctr
+module                cog_ctr
 (
-input               clk_cog,
-input               clk_pll,
+input                clk_cog,
+input                clk_pll,
 
-input               ena,
+input                ena,
 
-input               setctr,
-input               setfrq,
-input               setphs,
+input                setctr,
+input                setfrq,
+input                setphs,
 
-input       [31:0]  data,
+input        [31:0]    data,
 
-input       [31:0]  pin_in,
+input        [31:0]    pin_in,
 
-output reg  [32:0]  phs,
+output reg    [32:0]    phs,
 
-output      [31:0]  pin_out,
+output        [31:0]    pin_out,
 
-output              pll
+output                pll
 );
 
 
@@ -75,35 +75,35 @@ if (|ctr[30:29])
 
 // trigger, outputs
 
-                    //  trigger         outb        outa
-wire [15:0][2:0] tp = { dly == 2'b10,   !dly[0],    1'b0,       // neg edge w/feedback
-                        dly == 2'b10,   1'b0,       1'b0,       // neg edge
-                        !dly[0],        !dly[0],    1'b0,       // neg w/feedback
-                        !dly[0],        1'b0,       1'b0,       // neg
-                        dly == 2'b01,   !dly[0],    1'b0,       // pos edge w/feedback
-                        dly == 2'b01,   1'b0,       1'b0,       // pos edge
-                        dly[0],         !dly[0],    1'b0,       // pos w/feedback
-                        dly[0],         1'b0,       1'b0,       // pos
-                        1'b1,           !phs[32],   phs[32],    // duty differential
-                        1'b1,           1'b0,       phs[32],    // duty single
-                        1'b1,           !phs[31],   phs[31],    // nco differential
-                        1'b1,           1'b0,       phs[31],    // nco single
-                        1'b1,           !pll,       pll,        // pll differential
-                        1'b1,           1'b0,       pll,        // pll single
-                        1'b1,           1'b0,       1'b0,       // pll internal
-                        1'b0,           1'b0,       1'b0 };     // off
+                    //    trigger            outb        outa
+wire [15:0][2:0] tp    = {    dly == 2'b10,    !dly[0],    1'b0,        // neg edge w/feedback
+                        dly == 2'b10,    1'b0,        1'b0,        // neg edge
+                        !dly[0],        !dly[0],    1'b0,        // neg w/feedback
+                        !dly[0],        1'b0,        1'b0,        // neg
+                        dly == 2'b01,    !dly[0],    1'b0,        // pos edge w/feedback
+                        dly == 2'b01,    1'b0,        1'b0,        // pos edge
+                        dly[0],            !dly[0],    1'b0,        // pos w/feedback
+                        dly[0],            1'b0,        1'b0,        // pos
+                        1'b1,            !phs[32],    phs[32],    // duty differential
+                        1'b1,            1'b0,        phs[32],    // duty single
+                        1'b1,            !phs[31],    phs[31],    // nco differential
+                        1'b1,            1'b0,        phs[31],    // nco single
+                        1'b1,            !pll,        pll,        // pll differential
+                        1'b1,            1'b0,        pll,        // pll single
+                        1'b1,            1'b0,        1'b0,        // pll internal
+                        1'b0,            1'b0,        1'b0 };        // off
 
-wire [3:0] pick     = ctr[29:26];
-wire [2:0] tba      = tp[pick];
+wire [3:0] pick        = ctr[29:26];
+wire [2:0] tba        = tp[pick];
 
-wire trig           = ctr[30] ? pick[dly]   : tba[2];       // trigger
-wire outb           = ctr[30] ? 1'b0        : tba[1];       // outb
-wire outa           = ctr[30] ? 1'b0        : tba[0];       // outa
+wire trig            = ctr[30] ? pick[dly]    : tba[2];        // trigger
+wire outb            = ctr[30] ? 1'b0        : tba[1];        // outb
+wire outa            = ctr[30] ? 1'b0        : tba[0];        // outa
 
 
 // output pins
 
-assign pin_out      = outb << ctr[13:9] | outa << ctr[4:0];
+assign pin_out        = outb << ctr[13:9] | outa << ctr[4:0];
 
 
 // pll simulator
@@ -114,8 +114,8 @@ always @(posedge clk_pll)
 if (~&ctr[30:28] && |ctr[27:26])
     pll_fake <= pll_fake + {4'b0, frq};
 
-wire [7:0] pll_taps = pll_fake[35:28];
+wire [7:0] pll_taps    = pll_fake[35:28];
 
-assign pll          = pll_taps[~ctr[25:23]];
+assign pll            = pll_taps[~ctr[25:23]];
 
 endmodule
