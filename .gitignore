@@ -1,4 +1,6 @@
 *.bak
+*.map
+*.jdi
 *.rpt
 *.qdf
 *.done
