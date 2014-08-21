@@ -21,11 +21,7 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
-//
-// Magnus Karlsson 20140820     Moved reg and wire declarations to top of file
-//
 // Magnus Karlsson 20140818     Rewrote SystemVerilog code to Verilog2001 style
-//
 
 module              cog_ctr
 (
@@ -50,22 +46,10 @@ output              pll
 );
 
 
-// reg and wire declarations
-
-reg  [31:0] ctr;
-reg  [31:0] frq;
-reg   [1:0] dly;
-wire [63:0] tp;
-wire  [3:0] pick;
-wire  [2:0] tba;
-wire        trig;
-wire        outb;
-wire        outa;
-reg  [35:0] pll_fake;
-wire  [7:0] pll_taps;
-
-
 // control
+
+reg [31:0] ctr;
+reg [31:0] frq;
 
 always @(posedge clk_cog or negedge ena)
 if (!ena)
@@ -84,6 +68,8 @@ if (setphs || trig)
 
 // input pins
 
+reg [1:0] dly;
+
 always @(posedge clk_cog)
 if (|ctr[30:29])
     dly <= {ctr[30] ? pin_in[ctr[13:9]] : dly[0], pin_in[ctr[4:0]]};
@@ -92,7 +78,7 @@ if (|ctr[30:29])
 // trigger, outputs
 
                         //  trigger         outb        outa
-assign tp       = { 1'b0,   dly == 2'b10,   !dly[0],    1'b0,       // neg edge w/feedback
+wire [63:0] tp  = { 1'b0,   dly == 2'b10,   !dly[0],    1'b0,       // neg edge w/feedback
                     1'b0,   dly == 2'b10,   1'b0,       1'b0,       // neg edge
                     1'b0,   !dly[0],        !dly[0],    1'b0,       // neg w/feedback
                     1'b0,   !dly[0],        1'b0,       1'b0,       // neg
@@ -109,12 +95,12 @@ assign tp       = { 1'b0,   dly == 2'b10,   !dly[0],    1'b0,       // neg edge 
                     1'b0,   1'b1,           1'b0,       1'b0,       // pll internal
                     1'b0,   1'b0,           1'b0,       1'b0 };     // off
 
-assign pick         = ctr[29:26] ;
-assign tba          = tp[pick*4 +: 3];
+wire [3:0] pick     = ctr[29:26];
+wire [2:0] tba      = tp[pick*4 +: 3];
 
-assign trig         = ctr[30] ? pick[dly]   : tba[2];       // trigger
-assign outb         = ctr[30] ? 1'b0        : tba[1];       // outb
-assign outa         = ctr[30] ? 1'b0        : tba[0];       // outa
+wire trig           = ctr[30] ? pick[dly]   : tba[2];       // trigger
+wire outb           = ctr[30] ? 1'b0        : tba[1];       // outb
+wire outa           = ctr[30] ? 1'b0        : tba[0];       // outa
 
 
 // output pins
@@ -124,11 +110,13 @@ assign pin_out      = outb << ctr[13:9] | outa << ctr[4:0];
 
 // pll simulator
 
+reg [35:0] pll_fake;
+
 always @(posedge clk_pll)
 if (~&ctr[30:28] && |ctr[27:26])
     pll_fake <= pll_fake + {4'b0, frq};
 
-assign pll_taps     = pll_fake[35:28];
+wire [7:0] pll_taps = pll_fake[35:28];
 
 assign pll          = pll_taps[~ctr[25:23]];
 

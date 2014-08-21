@@ -21,10 +21,7 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
-//
-// Magnus Karlsson 20140820 Moved reg and wire declarations to top of file
-//
-// RR20140816   Remove unscrambling ROM code (now not scrambled)
+// RR20140816	Remove unscrambling ROM code (now not scrambled)
 
 `include "hub_mem.v"
 
@@ -55,39 +52,14 @@ output reg   [7:0]  cfg
 );
 
 
-// reg and wire declarations
-
-reg         rc;
-reg         ec;
-reg         wc;
-reg [1:0]   sc;
-reg [15:0]  ac;
-reg [31:0]  dc;
-wire        mem_w;
-wire [3:0]  mem_wb;
-wire [31:0] mem_d;
-wire [31:0] mem_q;
-reg         rd;
-reg         ed;
-reg [1:0]   sd;
-reg [1:0]   ad;
-wire [31:0] ramq;
-wire        sys;
-wire [7:0]  enc;
-wire        all;
-wire [2:0]  newx;
-wire [2:0]  num;
-wire [7:0]  num_dcd;
-reg [7:0]   cog_e;
-wire        cog_start;
-reg [7:0]   lock_e;
-reg [7:0]   lock_state;
-wire        lock_mux;
-reg [2:0]   sys_q;
-reg         sys_c;
-
-
 // latch bus signals from cog[n]
+
+reg rc;
+reg ec;
+reg wc;
+reg [1:0] sc;
+reg [15:0] ac;
+reg [31:0] dc;
 
 always @(posedge clk_cog)
 if (ena_bus)
@@ -118,15 +90,17 @@ if (ena_bus)
 
 // connect hub memory to signals from cog[n-1]
 
-assign mem_w        = ec && ~&sc && wc;
+wire mem_w          = ec && ~&sc && wc;
 
-assign mem_wb       = sc[1] ? 4'b1111                       // wrlong
+wire [3:0] mem_wb   = sc[1] ? 4'b1111                       // wrlong
                     : sc[0] ? ac[1] ? 4'b1100 : 4'b0011     // wrword
                             : 4'b0001 << ac[1:0];           // wrbyte
 
-assign mem_d        = sc[1] ? dc                            // wrlong
+wire [31:0] mem_d   = sc[1] ? dc                            // wrlong
                     : sc[0] ? {2{dc[15:0]}}                 // wrword
                             : {4{dc[7:0]}};                 // wrbyte
+
+wire [31:0] mem_q;
 
 hub_mem hub_mem_  ( .clk_cog    (clk_cog),
                     .ena_bus    (ena_bus),
@@ -138,6 +112,11 @@ hub_mem hub_mem_  ( .clk_cog    (clk_cog),
 
 
 // latch bus signals from cog[n-1]
+
+reg rd;
+reg ed;
+reg [1:0] sd;
+reg [1:0] ad;
 
 always @(posedge clk_cog)
 if (ena_bus)
@@ -160,7 +139,7 @@ if (ena_bus)
 
 // set bus output according to cog[n-2]
 
-assign ramq         = mem_q;
+wire [31:0] ramq    = mem_q;
 
 always @(posedge clk_cog)
     bus_q <=  sd[1] ? sd[0] ? {29'b0, sys_q}                                // cogid/coginit/locknew
@@ -189,13 +168,13 @@ assign bus_ack      = ed ? {bus_sel[1:0], bus_sel[7:2]} : 8'b0;
 //  110     LOCKSET     -,id(3)             id(3)           id(3)           lock_state[id(3)]
 //  111     LOCKCLR     -,id(3)             id(3)           id(3)           lock_state[id(3)]
 
-assign sys          = ec && (&sc);
+wire sys            = ec && (&sc);
 
-assign enc          = ac[2] ? lock_e : cog_e;
+wire [7:0] enc      = ac[2] ? lock_e : cog_e;
 
-assign all          = &enc;     // no free cogs/locks
+wire all            = &enc;     // no free cogs/locks
 
-assign newx         = &enc[3:0] ? &enc[5:4] ? enc[6]    ? 3'b111        // x1111111 -> 111
+wire [2:0] newx     = &enc[3:0] ? &enc[5:4] ? enc[6]    ? 3'b111        // x1111111 -> 111
                                                         : 3'b110        // x0111111 -> 110
                                             : enc[4]    ? 3'b101        // xx011111 -> 101
                                                         : 3'b100        // xxx01111 -> 100
@@ -204,9 +183,9 @@ assign newx         = &enc[3:0] ? &enc[5:4] ? enc[6]    ? 3'b111        // x1111
                                             : enc[0]    ? 3'b001        // xxxxxx01 -> 001
                                                         : 3'b000;       // xxxxxxx0 -> 000
 
-assign num          = ac[2:0] == 3'b010 && dc[3] || ac[2:0] == 3'b100 ? newx : dc[2:0];
+wire [2:0] num      = ac[2:0] == 3'b010 && dc[3] || ac[2:0] == 3'b100 ? newx : dc[2:0];
 
-assign num_dcd      = 1'b1 << num;
+wire [7:0] num_dcd  = 1'b1 << num;
 
 
 // cfg
@@ -220,7 +199,9 @@ else if (ena_bus && sys && ac[2:0] == 3'b000)
 
 // cogs
 
-assign cog_start    = sys && ac[2:0] == 3'b010 && !(dc[3] && all);
+reg [7:0] cog_e;
+
+wire cog_start      = sys && ac[2:0] == 3'b010 && !(dc[3] && all);
 
 always @(posedge clk_cog or negedge nres)
 if (!nres)
@@ -241,6 +222,9 @@ assign ptr_d        = dc[31:4];
 
 // locks
 
+reg [7:0] lock_e;
+reg [7:0] lock_state;
+
 always @(posedge clk_cog or negedge nres)
 if (!nres)
     lock_e <= 8'b0;
@@ -251,10 +235,13 @@ always @(posedge clk_cog)
 if (ena_bus && sys && ac[2:1] == 2'b11)
     lock_state <= lock_state & ~num_dcd | {8{!ac[0]}} & num_dcd;
 
-assign lock_mux     = lock_state[dc[2:0]];
+wire lock_mux       = lock_state[dc[2:0]];
 
 
 // output
+
+reg [2:0] sys_q;
+reg sys_c;
 
 always @(posedge clk_cog)
 if (ena_bus && sys)
