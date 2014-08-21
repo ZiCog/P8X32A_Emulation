@@ -147,9 +147,6 @@ I   SSSSSSSSS   source operand
 
 */
 
-//
-// Magnus Karlsson 20140820 Moved reg and wire declarations to top of file
-//
 
 `include "cog_ram.v"
 `include "cog_alu.v"
@@ -206,63 +203,9 @@ parameter sh        = 8;
 parameter sl        = 0;
 
 
-// reg and wire declarations
-
-reg         [27:0] ptr;
-reg         run;
-reg [4:0]   m;
-reg [8:0]   p;
-reg         c;
-reg         z;
-wire        wio;
-wire        setouta;
-wire        setdira;
-wire        setctra;
-wire        setctrb;
-wire        setfrqa;
-wire        setfrqb;
-wire        setphsa;
-wire        setphsb;
-wire        setvid;
-wire        setscl;
-wire        ram_ena;
-wire        ram_w;
-wire [8:0]  ram_a;
-wire [31:0] ram_q;
-wire [31:0] alu_r;
-reg [31:0]  outa;
-reg [31:0]  dira;
-wire [32:0] phsa;
-wire [31:0] ctra_pin_out;
-wire        plla;
-wire [32:0] phsb;
-wire [31:0] ctrb_pin_out;
-wire        pllb;
-wire        vidack;
-wire [31:0] vid_pin_out;
-reg [31:0]  s;
-reg [31:0]  d;
-reg [31:0]  ix;
-wire [31:0] i;
-reg [31:0]  sy;
-wire [31:0] sx;
-wire [3:0]  condx;
-wire        cond;
-reg         cancel;
-wire        dz;
-wire [1:0]  jumpx;
-wire        jump;
-wire        jump_cancel;
-wire [8:0]  px;
-wire        alu_wr;
-wire        alu_co;
-wire        alu_zo;
-reg         match;
-wire        waitx;
-wire        waiti;
-
-
 // pointers
+
+reg [27:0] ptr;
 
 always @(posedge clk_cog or negedge nres)
 if (!nres)
@@ -270,7 +213,10 @@ if (!nres)
 else if (ena_bus && ptr_w)
     ptr <= ptr_d;
 
+
 // load/run
+
+reg run;
 
 always @(posedge clk_cog or negedge ena)
 if (!ena)
@@ -280,6 +226,8 @@ else if (m[3] && (&px))
 
 
 // state
+
+reg [4:0] m;
 
 always @(posedge clk_cog or negedge ena)
 if (!ena)
@@ -293,6 +241,10 @@ else
 
 
 // process
+
+reg [8:0] p;
+reg c;
+reg z;
 
 always @(posedge clk_cog or negedge ena)
 if (!ena)
@@ -339,29 +291,31 @@ else if (m[3] && cond && i[wz])
 //
 // * future 64-pin version
 
-assign wio          = m[3] && cond && i[wr] && (&i[dh:dl+4]);
+wire wio            = m[3] && cond && i[wr] && (&i[dh:dl+4]);
 
-assign setouta      = wio && i[dl+3:dl] == 4'h4;
-assign setdira      = wio && i[dl+3:dl] == 4'h6;
-assign setctra      = wio && i[dl+3:dl] == 4'h8;
-assign setctrb      = wio && i[dl+3:dl] == 4'h9;
-assign setfrqa      = wio && i[dl+3:dl] == 4'hA;
-assign setfrqb      = wio && i[dl+3:dl] == 4'hB;
-assign setphsa      = wio && i[dl+3:dl] == 4'hC;
-assign setphsb      = wio && i[dl+3:dl] == 4'hD;
-assign setvid       = wio && i[dl+3:dl] == 4'hE;
-assign setscl       = wio && i[dl+3:dl] == 4'hF;
+wire setouta        = wio && i[dl+3:dl] == 4'h4;
+wire setdira        = wio && i[dl+3:dl] == 4'h6;
+wire setctra        = wio && i[dl+3:dl] == 4'h8;
+wire setctrb        = wio && i[dl+3:dl] == 4'h9;
+wire setfrqa        = wio && i[dl+3:dl] == 4'hA;
+wire setfrqb        = wio && i[dl+3:dl] == 4'hB;
+wire setphsa        = wio && i[dl+3:dl] == 4'hC;
+wire setphsb        = wio && i[dl+3:dl] == 4'hD;
+wire setvid         = wio && i[dl+3:dl] == 4'hE;
+wire setscl         = wio && i[dl+3:dl] == 4'hF;
 
 
 // register ram
 
-assign ram_ena      = m[0] || m[1] || m[2] || m[3] && cond && i[wr];
+wire ram_ena        = m[0] || m[1] || m[2] || m[3] && cond && i[wr];
 
-assign ram_w        = m[3] && alu_wr;
+wire ram_w          = m[3] && alu_wr;
 
-assign ram_a        = m[2]  ? px
+wire [8:0] ram_a    = m[2]  ? px
                     : m[0]  ? i[sh:sl]
                             : i[dh:dl];
+wire [31:0] ram_q;
+wire [31:0] alu_r;
 
 cog_ram cog_ram_  ( .clk    (clk_cog),
                     .ena    (ram_ena),
@@ -372,6 +326,9 @@ cog_ram cog_ram_  ( .clk    (clk_cog),
 
 
 // outa/dira
+
+reg [31:0] outa;
+reg [31:0] dira;
 
 always @(posedge clk_cog)
 if (setouta)
@@ -386,6 +343,10 @@ else if (setdira)
 
 // ctra/ctrb
 
+wire [32:0] phsa;
+wire [31:0] ctra_pin_out;
+wire plla;
+
 cog_ctr cog_ctra  ( .clk_cog    (clk_cog),
                     .clk_pll    (clk_pll),
                     .ena        (ena),
@@ -397,6 +358,10 @@ cog_ctr cog_ctra  ( .clk_cog    (clk_cog),
                     .phs        (phsa),
                     .pin_out    (ctra_pin_out),
                     .pll        (plla) );
+
+wire [32:0] phsb;
+wire [31:0] ctrb_pin_out;
+wire pllb;
 
 cog_ctr cog_ctrb  ( .clk_cog    (clk_cog),
                     .clk_pll    (clk_pll),
@@ -415,6 +380,12 @@ assign pll_out      = plla;
 
 // vid
 
+wire vidack;
+wire [31:0] vid_pin_out;
+
+reg [31:0] s;
+reg [31:0] d;
+
 cog_vid cog_vid_  ( .clk_cog    (clk_cog),
                     .clk_vid    (plla),
                     .ena        (ena),
@@ -431,20 +402,24 @@ cog_vid cog_vid_  ( .clk_cog    (clk_cog),
 
 // instruction
 
+reg [31:0] ix;
+
 always @(posedge clk_cog)
 if (m[3])
     ix <= ram_q;
 
-assign i            = run ? ix : {14'b000010_001_0_0001, p, 9'b000000000};
+wire [31:0] i       = run ? ix : {14'b000010_001_0_0001, p, 9'b000000000};
 
 
 // source
+
+reg [31:0] sy;
 
 always @(posedge clk_cog)
 if (m[1])
     sy <= ram_q;
 
-assign sx           = i[im]                 ? {23'b0, i[sh:sl]}
+wire [31:0] sx      = i[im]                 ? {23'b0, i[sh:sl]}
                     : i[sh:sl] == 9'h1F0    ? {16'b0, ptr[27:14], 2'b0}
                     : i[sh:sl] == 9'h1F1    ? cnt
                     : i[sh:sl] == 9'h1F2    ? pin_in
@@ -460,6 +435,7 @@ if (m[2])
 
 // destination
 
+
 always @(posedge clk_cog)
 if (m[2])
     d <= ram_q;
@@ -467,25 +443,27 @@ if (m[2])
 
 // condition
 
-assign condx        = i[ch:cl];
+wire [3:0] condx    = i[ch:cl];
 
-assign cond         = condx[{c, z}] && !cancel;
+wire cond           = condx[{c, z}] && !cancel;
 
 
 // jump/next
 
-assign dz           = ~|d[31:1];
+reg cancel;
 
-assign jumpx        = i[oh:ol] == 6'b010111     ? {1'b1, 1'b0}              // retjmp
+wire dz             = ~|d[31:1];
+
+wire [1:0] jumpx    = i[oh:ol] == 6'b010111     ? {1'b1, 1'b0}              // retjmp
                     : i[oh:ol] == 6'b111001     ? {1'b1, dz && d[0]}        // djnz
                     : i[oh:ol] == 6'b111010     ? {1'b1, dz && !d[0]}       // tjnz
                     : i[oh:ol] == 6'b111011     ? {1'b1, !(dz && !d[0])}    // tjz
                                                 : {1'b0, 1'b0};             // no jump
 
-assign jump         = jumpx[1];
-assign jump_cancel  = jumpx[0];
+wire jump           = jumpx[1];
+wire jump_cancel    = jumpx[0];
 
-assign px           = cond && jump ? sx[8:0] : p;
+wire [8:0] px       = cond && jump ? sx[8:0] : p;
 
 always @(posedge clk_cog or negedge ena)
 if (!ena)
@@ -506,6 +484,10 @@ assign bus_d        = !bus_sel ? 32'b0  : d;
 
 // alu interface
 
+wire alu_wr;
+wire alu_co;
+wire alu_zo;
+
 cog_alu cog_alu_  ( .i      (i[oh:ol]),
                     .s      (s),
                     .d      (d),
@@ -520,7 +502,10 @@ cog_alu cog_alu_  ( .i      (i[oh:ol]),
                     .co     (alu_co),
                     .zo     (alu_zo) );
 
+
 // pin/count match
+
+reg match;
 
 always @(posedge clk_cog)
     match <= m[4] && (i[ol+1:ol] == 2'b01 ^ (i[ol+1] ? cnt : pin_in & s) == d);
@@ -528,13 +513,13 @@ always @(posedge clk_cog)
 
 // wait
 
-assign waitx        = i[oh:ol+2] == 4'b0000__   ? !bus_ack
+wire waitx          = i[oh:ol+2] == 4'b0000__   ? !bus_ack
                     : i[oh:ol+1] == 5'b11110_   ? !match
                     : i[oh:ol+0] == 6'b111110   ? !match
                     : i[oh:ol+0] == 6'b111111   ? !vidack
                                                 : 1'b0;
 
-assign waiti        = cond && waitx;
+wire waiti          = cond && waitx;
 
 
 // pins
