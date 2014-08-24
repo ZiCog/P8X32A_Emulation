@@ -68,6 +68,6 @@ begin
 
     -- cog leds
 
-    ledg[]          = core.cog_led[];
+    !ledg[]         = core.cog_led[];
 
 end;
