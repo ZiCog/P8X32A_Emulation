@@ -1,0 +1,65 @@
+#
+# 
+#
+# Andrew Silverman 20140902	UCF file for Digilent Nexys4
+#
+
+# 100MHz onboard oscillator
+NET "clock_50" IOSTANDARD = LVCMOS33;
+NET "clock_50" LOC = "E3";
+#NET "clock_50" TNM_NET = "sys_clk_pin";
+#TIMESPEC "TS_clock_50" = PERIOD "sys_clk_pin" 100 MHz HIGH 50%;
+
+NET "clock_160" TNM_NET = "clock_160";
+TIMESPEC "TS_clock_160" = PERIOD "clock_160" 160 MHz HIGH 50 % PRIORITY 0 ;
+
+NET "clk_pll" TNM_NET = "TNM_CLK_PLL";
+TIMESPEC "TS_CLK_PLL" = PERIOD "TNM_CLK_PLL" 160 MHz HIGH 50 % PRIORITY 0 ;
+
+NET "divide[12]" TNM_NET = "TNM_CLK_COG";
+TIMESPEC "TS_CLK_COG" = PERIOD "TNM_CLK_COG" 80 MHz HIGH 50 % PRIORITY 0 ;
+
+
+NET "dtr" LOC = "E5"  | IOSTANDARD = LVCMOS33 ; #This is actually the RTS line on the built-in serial port UART, not DTR. Set Propeller tool accordingly.
+
+NET "pin[0]"  LOC = "U9"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 0
+NET "pin[1]"  LOC = "U8"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 1
+NET "pin[2]"  LOC = "R7"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 2
+NET "pin[3]"  LOC = "R6"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 3
+NET "pin[4]"  LOC = "R5"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 4
+NET "pin[5]"  LOC = "V7"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 5
+NET "pin[6]"  LOC = "V6"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 6
+NET "pin[7]"  LOC = "V5"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 7
+NET "pin[8]"  LOC = "U4"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 8
+NET "pin[9]"  LOC = "V2"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 9
+NET "pin[10]" LOC = "U2"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 10
+NET "pin[11]" LOC = "T3"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 11
+NET "pin[12]" LOC = "T1"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 12
+NET "pin[13]" LOC = "R3"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 13
+NET "pin[14]" LOC = "P3"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 14
+NET "pin[15]" LOC = "P4"  | IOSTANDARD = LVCMOS33 ; #Nexys 4 Switch 15
+NET "pin[16]" LOC = "K5"  | IOSTANDARD = LVCMOS33 ; #RGB1 Red
+NET "pin[17]" LOC = "F13"  | IOSTANDARD = LVCMOS33 ;#RGB1 Green
+NET "pin[18]" LOC = "F6"  | IOSTANDARD = LVCMOS33 ; #RGB1 Blue
+NET "pin[19]" LOC = "K6"  | IOSTANDARD = LVCMOS33 ; #RGB2 Red
+NET "pin[20]" LOC = "H6"  | IOSTANDARD = LVCMOS33 ; #RGB2 Green
+NET "pin[21]" LOC = "L16"  | IOSTANDARD = LVCMOS33 ;#RGB2 Blue
+NET "pin[22]" LOC = "V4"  | IOSTANDARD = LVCMOS33 ; #LED 8
+NET "pin[23]" LOC = "U3"  | IOSTANDARD = LVCMOS33 ; #LED 9
+NET "pin[24]" LOC = "V1"  | IOSTANDARD = LVCMOS33 ; #LED 10
+NET "pin[25]" LOC = "R1"  | IOSTANDARD = LVCMOS33 ; #LED 11
+NET "pin[26]" LOC = "P5"  | IOSTANDARD = LVCMOS33 ; #LED 12
+NET "pin[27]" LOC = "U1"  | IOSTANDARD = LVCMOS33 ; #LED 13
+NET "pin[28]" LOC = "R2"  | IOSTANDARD = LVCMOS33 ; #| PULLUP ; #Enable if connecting I2C RAM to these pins (Also connected to LED14)
+NET "pin[29]" LOC = "P2"  | IOSTANDARD = LVCMOS33 ; #| PULLUP ; #Enable if connecting I2C RAM to these pins (Also connected to LED15)
+NET "pin[30]" LOC = "D4"  | IOSTANDARD = LVCMOS33 ; #RS232 Rx From PC
+NET "pin[31]" LOC = "C4"  | IOSTANDARD = LVCMOS33 ; #RS232 Tx From Propeller
+
+NET "ledg[0]" LOC = "T8"  | IOSTANDARD = LVCMOS33 ; #LED0
+NET "ledg[1]" LOC = "V9"  | IOSTANDARD = LVCMOS33 ; #LED1
+NET "ledg[2]" LOC = "R8"  | IOSTANDARD = LVCMOS33 ; #LED2
+NET "ledg[3]" LOC = "T6"  | IOSTANDARD = LVCMOS33 ; #LED3
+NET "ledg[4]" LOC = "T5"  | IOSTANDARD = LVCMOS33 ; #LED4
+NET "ledg[5]" LOC = "T4"  | IOSTANDARD = LVCMOS33 ; #LED5
+NET "ledg[6]" LOC = "U7"  | IOSTANDARD = LVCMOS33 ; #LED6
+NET "ledg[7]" LOC = "U6"  | IOSTANDARD = LVCMOS33 ; #LED7
