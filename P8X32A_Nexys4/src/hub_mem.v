@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License along with
 the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
+// Andy Silverman  20140903     Provide fully standard Propeller configuration including video rom and full math tables, 32K RAM
 //
 // Magnus Karlsson 20140818     RAM is now 64KB
 //
@@ -43,58 +44,84 @@ output      [31:0]  q
 );
 
 
-// 16KB x 32 (64KB) ram with byte-write enables ($0000..$FFFF)
-reg [7:0] ram3 [16*1024-1:0];   // 4 x 16KB
-reg [7:0] ram2 [16*1024-1:0];
-reg [7:0] ram1 [16*1024-1:0];
-reg [7:0] ram0 [16*1024-1:0];
+// 8192 x 32 ram with byte-write enables ($0000..$7FFF)
 
-// pre-load ROM
-initial
-begin
-    $readmemh ("ROM_$F000-$FFFF_BYTE_0.spin", ram0, 15*1024);
-    $readmemh ("ROM_$F000-$FFFF_BYTE_1.spin", ram1, 15*1024);
-    $readmemh ("ROM_$F000-$FFFF_BYTE_2.spin", ram2, 15*1024);
-    $readmemh ("ROM_$F000-$FFFF_BYTE_3.spin", ram3, 15*1024);
-end
+reg [7:0] ram3 [8191:0];
+reg [7:0] ram2 [8191:0];
+reg [7:0] ram1 [8191:0];
+reg [7:0] ram0 [8191:0];
 
 reg [7:0] ram_q3;
 reg [7:0] ram_q2;
 reg [7:0] ram_q1;
 reg [7:0] ram_q0;
 
-
 always @(posedge clk_cog)
 begin
-    if (ena_bus && w && wb[3])
-        ram3[a[13:0]] <= d[31:24];
-    if (ena_bus)
-        ram_q3 <= ram3[a[13:0]];
+    if (ena_bus && !a[13] && w && wb[3])
+        ram3[a[12:0]] <= d[31:24];
+    if (ena_bus && !a[13])
+        ram_q3 <= ram3[a[12:0]];
 end
 
 always @(posedge clk_cog)
 begin
-    if (ena_bus && w && wb[2])
-        ram2[a[13:0]] <= d[23:16];
-    if (ena_bus)
-        ram_q2 <= ram2[a[13:0]];
+    if (ena_bus && !a[13] && w && wb[2])
+        ram2[a[12:0]] <= d[23:16];
+    if (ena_bus && !a[13])
+        ram_q2 <= ram2[a[12:0]];
 end
 
 always @(posedge clk_cog)
 begin
-    if (ena_bus && w && wb[1])
-        ram1[a[13:0]] <= d[15:8];
-    if (ena_bus)
-        ram_q1 <= ram1[a[13:0]];
+    if (ena_bus && !a[13] && w && wb[1])
+        ram1[a[12:0]] <= d[15:8];
+    if (ena_bus && !a[13])
+        ram_q1 <= ram1[a[12:0]];
 end
 
 always @(posedge clk_cog)
 begin
-    if (ena_bus && w && wb[0])
-        ram0[a[13:0]] <= d[7:0];
-    if (ena_bus)
-        ram_q0 <= ram0[a[13:0]];
+    if (ena_bus && !a[13] && w && wb[0])
+        ram0[a[12:0]] <= d[7:0];
+    if (ena_bus && !a[13])
+        ram_q0 <= ram0[a[12:0]];
 end
 
-assign q        = {ram_q3, ram_q2, ram_q1, ram_q0};
+// 4096 x 32 rom containing character definitions ($8000..$BFFF)
+
+reg [31:0] rom_low [4095:0];
+reg [31:0] rom_low_q;
+
+// 4096 x 32 rom containing sin table, log table, booter, and interpreter ($C000..$FFFF)
+reg [31:0] rom_high [4095:0];
+reg [31:0] rom_high_q;
+
+// pre-load ROM
+initial
+begin
+    $readmemh ("P8X32A_ROM_FONT.spin", rom_low);
+    $readmemh ("ROM_$C000-$FFFF_UNSCRAMBLED.spin", rom_high); 
+end
+
+always @(posedge clk_cog)
+if (ena_bus && a[13:12] == 2'b10)
+    rom_low_q <= rom_low[a[11:0]];
+
+always @(posedge clk_cog)
+if (ena_bus && a[13:12] == 2'b11)
+    rom_high_q <= rom_high[a[11:0]];
+
+
+// memory output mux
+
+reg [1:0] mem;
+
+always @(posedge clk_cog)
+if (ena_bus)
+    mem <= a[13:12];
+
+assign q            = !mem[1]   ? {ram_q3, ram_q2, ram_q1, ram_q0}
+                    : !mem[0]   ? rom_low_q     // comment out this line for DE0-Nano (sacrifices character rom to fit device)
+                                : rom_high_q;
 endmodule

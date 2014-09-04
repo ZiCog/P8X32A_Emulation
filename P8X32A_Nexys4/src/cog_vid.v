@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License along with
 the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
-
+// Andy Silverman  20140904     Converted clock signal with logic to Xilinx clock enabled primitive.
 // Magnus Karlsson 20140818     Rewrote SystemVerilog code to Verilog2001 style
 
 module              cog_vid
@@ -72,7 +72,9 @@ reg [31:0] colors;
 
 wire enable         = |vid[30:29];
 
-wire vclk           = clk_vid && enable;
+//wire vclk			= clk_vid && enable;
+wire vclk;
+BUFGCE vclk_buf (.I(clk_vid),.CE(enable),.O(vclk));
 
 wire new_set        = set == 1'b1;
 wire new_cnt        = cnt == 1'b1;
