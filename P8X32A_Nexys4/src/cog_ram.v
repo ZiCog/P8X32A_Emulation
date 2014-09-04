@@ -21,31 +21,31 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
-// Magnus Karlsson 20140818	Rewrote SystemVerilog code to Verilog2001 style
+// Magnus Karlsson 20140818     Rewrote SystemVerilog code to Verilog2001 style
 
-module				cog_ram
+module              cog_ram
 (
-input				clk,
-input				ena,
+input               clk,
+input               ena,
 
-input				w,
-input		 [8:0]	a,
-input		[31:0]	d,
+input               w,
+input        [8:0]  a,
+input       [31:0]  d,
 
-output reg	[31:0]	q
+output reg  [31:0]  q
 );
 
 
 // 512 x 32 ram
 
-reg			[31:0]	r [511:0];
+reg         [31:0]  r [511:0];
 
 always @(posedge clk)
 begin
-	if (ena && w)
-		r[a] <= d;
-	if (ena)
-		q <= r[a];
+    if (ena && w)
+        r[a] <= d;
+    if (ena)
+        q <= r[a];
 end
 
 endmodule
