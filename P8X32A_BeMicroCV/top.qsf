@@ -90,14 +90,15 @@ set_location_assignment PIN_H13 -to clock_50
 
 set_location_assignment PIN_M16 -to inp_resn
 
-set_location_assignment PIN_N1 -to ledg[7]
+# (JG) Fixed LED assignments; they don't match the documentation!
+set_location_assignment PIN_N1 -to ledg[0]
 set_location_assignment PIN_AA2 -to ledg[6]
-set_location_assignment PIN_Y3 -to ledg[5]
-set_location_assignment PIN_AA1 -to ledg[4]
-set_location_assignment PIN_W2 -to ledg[3]
-set_location_assignment PIN_U2 -to ledg[2]
+set_location_assignment PIN_Y3 -to ledg[7]
+set_location_assignment PIN_AA1 -to ledg[5]
+set_location_assignment PIN_W2 -to ledg[4]
+set_location_assignment PIN_U2 -to ledg[3]
 set_location_assignment PIN_N2 -to ledg[1]
-set_location_assignment PIN_U1 -to ledg[0]
+set_location_assignment PIN_U1 -to ledg[2]
 
 set_location_assignment PIN_T9 -to io[31]
 set_location_assignment PIN_T10 -to io[30]
@@ -169,4 +170,5 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to io[0]
 set_global_assignment -name FMAX_REQUIREMENT "80 MHz" -section_id clock_cog
 set_global_assignment -name FMAX_REQUIREMENT "160 MHz" -section_id clock_pll
 
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

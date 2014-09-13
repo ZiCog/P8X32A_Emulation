@@ -21,6 +21,8 @@ the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
 
+// Magnus Karlsson 20140818     Rewrote SystemVerilog code to Verilog2001 style
+
 module              cog_ctr
 (
 input               clk_cog,
@@ -75,26 +77,26 @@ if (|ctr[30:29])
 
 // trigger, outputs
 
-                    //  trigger         outb        outa
-wire [15:0][2:0] tp = { dly == 2'b10,   !dly[0],    1'b0,       // neg edge w/feedback
-                        dly == 2'b10,   1'b0,       1'b0,       // neg edge
-                        !dly[0],        !dly[0],    1'b0,       // neg w/feedback
-                        !dly[0],        1'b0,       1'b0,       // neg
-                        dly == 2'b01,   !dly[0],    1'b0,       // pos edge w/feedback
-                        dly == 2'b01,   1'b0,       1'b0,       // pos edge
-                        dly[0],         !dly[0],    1'b0,       // pos w/feedback
-                        dly[0],         1'b0,       1'b0,       // pos
-                        1'b1,           !phs[32],   phs[32],    // duty differential
-                        1'b1,           1'b0,       phs[32],    // duty single
-                        1'b1,           !phs[31],   phs[31],    // nco differential
-                        1'b1,           1'b0,       phs[31],    // nco single
-                        1'b1,           !pll,       pll,        // pll differential
-                        1'b1,           1'b0,       pll,        // pll single
-                        1'b1,           1'b0,       1'b0,       // pll internal
-                        1'b0,           1'b0,       1'b0 };     // off
+                        //  trigger         outb        outa
+wire [63:0] tp  = { 1'b0,   dly == 2'b10,   !dly[0],    1'b0,       // neg edge w/feedback
+                    1'b0,   dly == 2'b10,   1'b0,       1'b0,       // neg edge
+                    1'b0,   !dly[0],        !dly[0],    1'b0,       // neg w/feedback
+                    1'b0,   !dly[0],        1'b0,       1'b0,       // neg
+                    1'b0,   dly == 2'b01,   !dly[0],    1'b0,       // pos edge w/feedback
+                    1'b0,   dly == 2'b01,   1'b0,       1'b0,       // pos edge
+                    1'b0,   dly[0],         !dly[0],    1'b0,       // pos w/feedback
+                    1'b0,   dly[0],         1'b0,       1'b0,       // pos
+                    1'b0,   1'b1,           !phs[32],   phs[32],    // duty differential
+                    1'b0,   1'b1,           1'b0,       phs[32],    // duty single
+                    1'b0,   1'b1,           !phs[31],   phs[31],    // nco differential
+                    1'b0,   1'b1,           1'b0,       phs[31],    // nco single
+                    1'b0,   1'b1,           !pll,       pll,        // pll differential
+                    1'b0,   1'b1,           1'b0,       pll,        // pll single
+                    1'b0,   1'b1,           1'b0,       1'b0,       // pll internal
+                    1'b0,   1'b0,           1'b0,       1'b0 };     // off
 
 wire [3:0] pick     = ctr[29:26];
-wire [2:0] tba      = tp[pick];
+wire [2:0] tba      = tp[pick*4 +: 3];
 
 wire trig           = ctr[30] ? pick[dly]   : tba[2];       // trigger
 wire outb           = ctr[30] ? 1'b0        : tba[1];       // outb

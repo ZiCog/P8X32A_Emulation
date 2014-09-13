@@ -1,7 +1,5 @@
 // cog
 
-// 2014_08_10 - added patch for reset problem - PIK33/CGRACEY
-
 /*
 -------------------------------------------------------------------------------
 Copyright 2014 Parallax Inc.
@@ -211,7 +209,7 @@ reg [27:0] ptr;
 
 always @(posedge clk_cog or negedge nres)
 if (!nres)
-    ptr <= 27'b00000000000000_11111000000000;
+    ptr <= 28'b00000000000000_11111000000000;
 else if (ena_bus && ptr_w)
     ptr <= ptr_d;
 
@@ -317,7 +315,7 @@ wire [8:0] ram_a    = m[2]  ? px
                     : m[0]  ? i[sh:sl]
                             : i[dh:dl];
 wire [31:0] ram_q;
-
+wire [31:0] alu_r;
 
 cog_ram cog_ram_  ( .clk    (clk_cog),
                     .ena    (ram_ena),
@@ -385,6 +383,9 @@ assign pll_out      = plla;
 wire vidack;
 wire [31:0] vid_pin_out;
 
+reg [31:0] s;
+reg [31:0] d;
+
 cog_vid cog_vid_  ( .clk_cog    (clk_cog),
                     .clk_vid    (plla),
                     .ena        (ena),
@@ -413,7 +414,6 @@ wire [31:0] i       = run ? ix : {14'b000010_001_0_0001, p, 9'b000000000};
 // source
 
 reg [31:0] sy;
-reg [31:0] s;
 
 always @(posedge clk_cog)
 if (m[1])
@@ -435,7 +435,6 @@ if (m[2])
 
 // destination
 
-reg [31:0] d;
 
 always @(posedge clk_cog)
 if (m[2])
@@ -486,7 +485,6 @@ assign bus_d        = !bus_sel ? 32'b0  : d;
 // alu interface
 
 wire alu_wr;
-wire [31:0] alu_r;
 wire alu_co;
 wire alu_zo;
 

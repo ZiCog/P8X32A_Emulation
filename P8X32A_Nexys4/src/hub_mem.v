@@ -20,6 +20,15 @@ You should have received a copy of the GNU General Public License along with
 the Propeller 1 Design.  If not, see <http://www.gnu.org/licenses/>.
 -------------------------------------------------------------------------------
 */
+// Andy Silverman  20140903     Provide fully standard Propeller configuration including video rom and full math tables, 32K RAM
+//
+// Magnus Karlsson 20140818     RAM is now 64KB
+//
+// RR20140816   ROM to use new unscrambled code and preset with $readmemh
+//              ROM is now 4KB ($F000..$FFFF) and preset with interpreter/booter/runner
+//              RAM may be expanded to fill available space up to 60KB
+// RR20140816   Bigger Hub RAM & No ROM
+//              RAM is 48KB and remaps 48-64KB to 32-48KB
 
 module              hub_mem
 (
@@ -79,23 +88,25 @@ begin
         ram_q0 <= ram0[a[12:0]];
 end
 
-
 // 4096 x 32 rom containing character definitions ($8000..$BFFF)
 
-(* ram_init_file = "hub_rom_low.hex" *)     reg [31:0] rom_low [4095:0];
-
+reg [31:0] rom_low [4095:0];
 reg [31:0] rom_low_q;
+
+// 4096 x 32 rom containing sin table, log table, booter, and interpreter ($C000..$FFFF)
+reg [31:0] rom_high [4095:0];
+reg [31:0] rom_high_q;
+
+// pre-load ROM
+initial
+begin
+    $readmemh ("P8X32A_ROM_FONT.spin", rom_low);
+    $readmemh ("ROM_$C000-$FFFF_UNSCRAMBLED.spin", rom_high); 
+end
 
 always @(posedge clk_cog)
 if (ena_bus && a[13:12] == 2'b10)
     rom_low_q <= rom_low[a[11:0]];
-
-
-// 4096 x 32 rom containing sin table, log table, booter, and interpreter ($C000..$FFFF)
-
-(* ram_init_file = "hub_rom_high.hex" *)    reg [31:0] rom_high [4095:0];
-
-reg [31:0] rom_high_q;
 
 always @(posedge clk_cog)
 if (ena_bus && a[13:12] == 2'b11)
@@ -113,5 +124,4 @@ if (ena_bus)
 assign q            = !mem[1]   ? {ram_q3, ram_q2, ram_q1, ram_q0}
                     : !mem[0]   ? rom_low_q     // comment out this line for DE0-Nano (sacrifices character rom to fit device)
                                 : rom_high_q;
-
 endmodule
