@@ -1,6 +1,18 @@
 P8X32A_Emulation
 ================
 
+This repository is a dead end and has been abandoned. Sorry for any confusion or trouble this may have caused.
+-----------------------------------------------
+
+All of my Propeller P1V work is now in this repository:
+----------------
+https://github.com/mindrobots/P1V
+----------------
+
+
+
+
+
 Parallax Inc. Propeller micro-controller HDL.
 
 This is the verilog design files for the Parallax Inc. Propeller 32 bit 8 core micro-controller.

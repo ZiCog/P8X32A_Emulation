@@ -1,5 +1,7 @@
 // cog
 
+// 2014_08_10 - added patch for reset problem - PIK33/CGRACEY
+
 /*
 -------------------------------------------------------------------------------
 Copyright 2014 Parallax Inc.
@@ -334,10 +336,11 @@ always @(posedge clk_cog)
 if (setouta)
     outa <= alu_r;
 
-always @(posedge clk_cog)
-if (setdira)
+always @(posedge clk_cog or negedge ena)
+if (!ena)
+    dira <= 32'b0;
+else if (setdira)
     dira <= alu_r;
-
 
 // ctra/ctrb
 

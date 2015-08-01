@@ -1,0 +1,1 @@
+tools/fpgaprog -v -f synth/top.bit
